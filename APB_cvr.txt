@@ -1,0 +1,1488 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /APB_top/If
+=== Design Unit: work.APB_if
+=================================================================================
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        172         6       166     3.48%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /APB_top/If --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                       PADDR[15-0]           0           0                                0.00 
+                                              PCLK           1           1                              100.00 
+                                           PENABLE           0           0                                0.00 
+                                      PRDATA[31-0]           0           0                                0.00 
+                                            PREADY           0           0                                0.00 
+                                           PRESETn           1           1                              100.00 
+                                             PSELx           0           0                                0.00 
+                                      PWDATA[31-0]           0           0                                0.00 
+                                            PWRITE           1           1                              100.00 
+
+Total Node Count     =         86 
+Toggled Node Count   =          3 
+Untoggled Node Count =         83 
+
+Toggle Coverage      =       3.48% (6 of 172 bins)
+
+=================================================================================
+=== Instance: /APB_top/TEST
+=== Design Unit: work.APB_tb
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       4         3         1    75.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/APB_top/TEST/#ublk#73696930#23/immed__25
+                     APB_tb.sv(25)                      1          1
+/APB_top/TEST/#ublk#73696930#39/immed__41
+                     APB_tb.sv(41)                      0          1
+/APB_top/TEST/#ublk#73696930#54/immed__56
+                     APB_tb.sv(56)                      0          1
+/APB_top/TEST/#ublk#73696930#70/immed__72
+                     APB_tb.sv(72)                      0          1
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         1         1    50.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /APB_top/TEST
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_tb.sv
+------------------------------------IF Branch------------------------------------
+    93                                       400     Count coming in to IF
+    93              1                        400     if(/*DUT.apb_slave.address_encoding === encoding &&*/ DUT.apb_slave.correct_slave === correctSlave)
+    95              1                    ***0***     else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       1         0         1     0.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /APB_top/TEST --
+
+  File APB_tb.sv
+----------------Focused Condition View-------------------
+Line       93 Item    1  (DUT.apb_slave.correct_slave === correctSlave)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                                      Input Term   Covered  Reason for no coverage   Hint
+                                     -----------  --------  -----------------------  --------------
+  (DUT.apb_slave.correct_slave === correctSlave)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target                                        Non-masking condition(s)      
+ ---------  ---------  --------------------                              -------------------------     
+  Row   1:    ***0***  (DUT.apb_slave.correct_slave === correctSlave)_0  -                             
+  Row   2:          1  (DUT.apb_slave.correct_slave === correctSlave)_1  -                             
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                      2         0         2     0.00%
+
+================================Expression Details================================
+
+Expression Coverage for instance /APB_top/TEST --
+
+  File APB_tb.sv
+----------------Focused Expression View-----------------
+Line       122 Item    1  (If.PSELx && (1 === DUT.apb_slave.address_encoding))
+Expression totals: 0 of 2 input terms covered = 0.00%
+
+                              Input Term   Covered  Reason for no coverage   Hint
+                             -----------  --------  -----------------------  --------------
+                                If.PSELx         N  '_1' not hit             Hit '_1'
+  (1 === DUT.apb_slave.address_encoding)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                                Non-masking condition(s)      
+ ---------  ---------  --------------------                      -------------------------     
+  Row   1:          1  If.PSELx_0                                -                             
+  Row   2:    ***0***  If.PSELx_1                                (1 === DUT.apb_slave.address_encoding)
+  Row   3:    ***0***  (1 === DUT.apb_slave.address_encoding)_0  If.PSELx                      
+  Row   4:    ***0***  (1 === DUT.apb_slave.address_encoding)_1  If.PSELx                      
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      63        61         2    96.82%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_top/TEST --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_tb.sv
+    4                                                module APB_tb(APB_if.TEST If);
+    5                                                
+    6                                                logic correctSlave;
+    7                                                logic [3:0] encoding;
+    8                                                int error_count , correct_count;
+    9                                                
+    10              1                          1     APB_mon mon = new();
+    11              1                          1     APB_seq_item item = new();
+    12                                               
+    13                                               initial begin
+    14              1                          1         If.PADDR =0;
+    15              1                          1         If.PENABLE =0;
+    16              1                          1         If.PRESETn =0;
+    17              1                          1         If.PSELx =0;
+    18              1                          1         If.PWDATA =0;
+    19              1                          1         If.PWRITE =0;
+    20              1                          1         error_count =0;
+    21              1                          1         correct_count =0;
+    22                                               
+    23              1                        100         repeat(100) begin
+    24              1                        100             @(negedge If.PCLK);
+    25                                                       assert(item.randomize())
+    26                                                       If.PADDR = item.PADDR;
+    27              1                        100             If.PENABLE = item.PENABLE;
+    28              1                        100             If.PRESETn = item.PRESETn;
+    29              1                        100             If.PSELx = item.PSELx;
+    30              1                        100             If.PWDATA = item.PWDATA;
+    31              1                        100             If.PWRITE = 1;
+    32              1                        100             item.PREADY = If.PREADY;
+    33              1                        100             item.PRDATA = If.PRDATA;
+    34              1                        100             mon.monitor(item);
+    35              1                        100             check_slave(item);
+    36                                                       
+    37                                                   end
+    38                                                   
+    39              1                        100         repeat(100) begin
+    40              1                        100             @(negedge If.PCLK);
+    41                                                       assert(item.randomize())
+    42                                                       If.PADDR = item.PADDR;
+    43              1                        100             If.PENABLE = item.PENABLE;
+    44              1                        100             If.PRESETn = item.PRESETn;
+    45              1                        100             If.PSELx = item.PSELx;
+    46              1                        100             If.PWDATA = item.PWDATA;
+    47              1                        100             If.PWRITE = item.PWRITE;
+    48              1                        100             item.PREADY = If.PREADY;
+    49              1                        100             item.PRDATA = If.PRDATA;
+    50              1                        100             mon.monitor(item); 
+    51              1                        100             check_slave(item);  
+    52                                                   end
+    53                                               
+    54              1                        100         repeat(100) begin
+    55              1                        100             @(negedge If.PCLK);
+    56                                                       assert(item.randomize())
+    57                                                       If.PADDR = item.PADDR;
+    58              1                        100             If.PENABLE = item.PENABLE;
+    59              1                        100             If.PRESETn = item.PRESETn;
+    60              1                        100             If.PSELx = item.PSELx;
+    61              1                        100             If.PWDATA = item.PWDATA;
+    62              1                        100             If.PWRITE = 0;
+    63              1                        100             item.PREADY = If.PREADY;
+    64              1                        100             item.PRDATA = If.PRDATA;
+    65              1                        100             mon.monitor(item); 
+    66              1                        100             check_slave(item);   
+    67                                                   end
+    68                                               
+    69              1                          1         item.addr.constraint_mode(0);
+    70              1                        100         repeat(100) begin
+    71              1                        100             @(negedge If.PCLK);
+    72                                                       assert(item.randomize())
+    73                                                       If.PADDR = item.PADDR;
+    74              1                        100             If.PENABLE = item.PENABLE;
+    75              1                        100             If.PRESETn = item.PRESETn;
+    76              1                        100             If.PSELx = item.PSELx;
+    77              1                        100             If.PWDATA = item.PWDATA;
+    78              1                        100             If.PWRITE = item.PWRITE;
+    79              1                        100             item.PREADY = If.PREADY;
+    80              1                        100             item.PRDATA = If.PRDATA;
+    81              1                        100             mon.monitor(item);  
+    82              1                        100             check_slave(item);  
+    83                                                   end
+    84                                               
+    85              1                          1         @(negedge If.PCLK);
+    86              1                          1         $display("at the end of simulation error count = %d and correct count = %d",error_count,correct_count);
+    87              1                          1         $stop;
+    88                                               
+    89                                               end
+    90                                               
+    91                                               task check_slave (input APB_seq_item seqItem);
+    92              1                        400     check (seqItem);
+    93                                               if(/*DUT.apb_slave.address_encoding === encoding &&*/ DUT.apb_slave.correct_slave === correctSlave)
+    94              1                        400     correct_count++;
+    95                                               else begin
+    96              1                    ***0***         error_count++;
+    97              1                    ***0***         $display("error no.=%d at time %t PADDR=%16b PSELx=%d ",error_count,$time,seqItem.PADDR,seqItem.PSELx);
+    98                                               end
+    99                                               endtask
+    100                                              
+    101                                              task check (input APB_seq_item seq);
+    102                                              
+    103                                              /*case ({seq.PSELx,seq.PADDR[If.ADDR_WIDTH-1:If.ADDR_WIDTH-2]})
+    104                                              3'b100 : encoding = 4'b0001;
+    105                                              3'b101 : encoding = 4'b0010;
+    106                                              3'b110 : encoding = 4'b0100;
+    107                                              3'b111 : encoding = 4'b1000;
+    108                                              default: encoding = 4'b0000;
+    109                                              endcase*/
+    110                                              
+    111                                              /*if(seq.PSELx)
+    112                                              case (seq.PADDR[If.ADDR_WIDTH-1:If.ADDR_WIDTH-2])
+    113                                              2'b00 : encoding = 4'b0001;
+    114                                              2'b01 : encoding = 4'b0010;
+    115                                              2'b10 : encoding = 4'b0100;
+    116                                              2'b11 : encoding = 4'b1000;
+    117                                              default: encoding = 4'b0000;
+    118                                              endcase
+    119                                              else
+    120                                              encoding =0;*/
+    121                                              
+    122             1                        400     correctSlave = If.PSELx && (DUT.apb_slave.SLAVE_ID === DUT.apb_slave.address_encoding);
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        138        17       121    12.31%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /APB_top/TEST --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                      correctSlave           0           0                                0.00 
+                                correct_count[0-7]           1           1                              100.00 
+                                  correct_count[8]           0           1                               50.00 
+                               correct_count[9-31]           0           0                                0.00 
+                                     encoding[0-3]           0           0                                0.00 
+                                 error_count[0-31]           0           0                                0.00 
+
+Total Node Count     =         69 
+Toggled Node Count   =          8 
+Untoggled Node Count =         61 
+
+Toggle Coverage      =      12.31% (17 of 138 bins)
+
+=================================================================================
+=== Instance: /APB_top/DUT/reg_file
+=== Design Unit: work.RegisterFile
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        41         3        38     7.31%
+
+================================Branch Details================================
+
+Branch Coverage for instance /APB_top/DUT/reg_file
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_Wrapper.sv
+------------------------------------IF Branch------------------------------------
+    67                                         1     Count coming in to IF
+    67              1                    ***0***     		if (~wr & enable) begin
+                                               1     All False Count
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------CASE Branch------------------------------------
+    68                                   ***0***     Count coming in to CASE
+    69              1                    ***0***     				16'h0000: read_data <= SYS_STATUS_REG;
+    70              1                    ***0***     				16'h0040: read_data <= INT_CTRL_REG;
+    71              1                    ***0***     				16'h0080: read_data <= DEV_ID_REG;
+    72              1                    ***0***     				16'h00c0: read_data <= MEM_CTRL_REG;
+    73              1                    ***0***     				16'h0100: read_data <= TEMP_SENSOR_REG;
+    74              1                    ***0***     				16'h0140: read_data <= ADC_CTRL_REG;
+    75              1                    ***0***     				16'h0180: read_data <= DBG_CTRL_REG;
+    76              1                    ***0***     				16'h01c0: read_data <= GPIO_DATA_REG;
+    77              1                    ***0***     				16'h0200: read_data <= DAC_OUTPUT_REG;
+    78              1                    ***0***     				16'h0240: read_data <= VOLTAGE_CTRL_REG;
+    79              1                    ***0***     				16'h0280: read_data <= CLK_CONFIG_REG;
+    80              1                    ***0***     				16'h02c0: read_data <= TIMER_COUNT_REG;
+    81              1                    ***0***     				16'h0300: read_data <= INPUT_DATA_REG;
+    82              1                    ***0***     				16'h0340: read_data <= OUTPUT_DATA_REG;
+    83              1                    ***0***     				16'h0380: read_data <= DMA_CTRL_REG;
+    84              1                    ***0***     				16'h03c0: read_data <= SYS_CTRL_REG;
+                                         ***0***     All False Count
+Branch totals: 0 hits of 17 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    91                                       136     Count coming in to IF
+    91              1                         90         	if(~rstn) begin
+    94              1                    ***0***             else if(enable) begin
+                                              46     All False Count
+Branch totals: 2 hits of 3 branches = 66.66%
+
+------------------------------------IF Branch------------------------------------
+    96                                   ***0***     Count coming in to IF
+    96              1                    ***0***             	if(wr) begin
+                                         ***0***     All False Count
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------CASE Branch------------------------------------
+    97                                   ***0***     Count coming in to CASE
+    98              1                    ***0***                 		16'h0000: SYS_STATUS_REG	<= write_data;
+    99              1                    ***0***     					16'h0040: INT_CTRL_REG		<= write_data;
+    100             1                    ***0***     					16'h0080: DEV_ID_REG		<= write_data;
+    101             1                    ***0***     					16'h00c0: MEM_CTRL_REG		<= write_data;
+    102             1                    ***0***     					16'h0100: TEMP_SENSOR_REG	<= write_data;
+    103             1                    ***0***     					16'h0140: ADC_CTRL_REG		<= write_data;
+    104             1                    ***0***     					16'h0180: DBG_CTRL_REG		<= write_data;
+    105             1                    ***0***     					16'h01c0: GPIO_DATA_REG	 	<= write_data;
+    106             1                    ***0***     					16'h0200: DAC_OUTPUT_REG	<= write_data;
+    107             1                    ***0***     					16'h0240: VOLTAGE_CTRL_REG	<= write_data;
+    108             1                    ***0***     					16'h0280: CLK_CONFIG_REG	<= write_data;
+    109             1                    ***0***     					16'h02c0: TIMER_COUNT_REG	<= write_data;
+    110             1                    ***0***     					16'h0300: INPUT_DATA_REG	<= write_data;
+    111             1                    ***0***     					16'h0340: OUTPUT_DATA_REG	<= write_data;
+    112             1                    ***0***     					16'h0380: DMA_CTRL_REG		<= write_data;
+    113             1                    ***0***     					16'h03c0: SYS_CTRL_REG		<= write_data;
+                                         ***0***     All False Count
+Branch totals: 0 hits of 17 branches = 0.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       2         0         2     0.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /APB_top/DUT/reg_file --
+
+  File APB_Wrapper.sv
+----------------Focused Condition View-------------------
+Line       67 Item    1  (~wr & enable)
+Condition totals: 0 of 2 input terms covered = 0.00%
+
+  Input Term   Covered  Reason for no coverage   Hint
+ -----------  --------  -----------------------  --------------
+          wr         N  No hits                  Hit '_0' and '_1'
+      enable         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  wr_0                  enable                        
+  Row   2:    ***0***  wr_1                  enable                        
+  Row   3:          1  enable_0              ~wr                           
+  Row   4:    ***0***  enable_1              ~wr                           
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      35         3        32     8.57%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_top/DUT/reg_file --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_Wrapper.sv
+    28                                               module RegisterFile #(
+    29                                                   parameter DATA_WIDTH = 32,
+    30                                                   parameter ADDR_WIDTH = 16			
+    31                                               ) (
+    32                                               // Global Sinals
+    33                                               	input wire  						clk,
+    34                                                   input wire							rstn,  
+    35                                               
+    36                                                   input wire [ADDR_WIDTH-1 : 0]   	addr,
+    37                                                   input wire [DATA_WIDTH-1 : 0]   	write_data,
+    38                                                   input wire                      	wr,
+    39                                                   input wire 							enable,
+    40                                               
+    41                                                   output reg [DATA_WIDTH-1 : 0]   	read_data
+    42                                                   // output 	                      		RegSLVERR,
+    43                                                   // output reg                      	RegREADY      
+    44                                               );
+    45                                               
+    46                                               	// RegSLVERR is pripherable 
+    47                                               	assign RegSLVERR = 0;
+    48                                               		
+    49                                               	// Registers
+    50                                               	reg [DATA_WIDTH-1:0] SYS_STATUS_REG;
+    51                                               	reg [DATA_WIDTH-1:0] INT_CTRL_REG;
+    52                                               	reg [DATA_WIDTH-1:0] DEV_ID_REG;
+    53                                               	reg [DATA_WIDTH-1:0] MEM_CTRL_REG;
+    54                                               	reg [DATA_WIDTH-1:0] TEMP_SENSOR_REG;
+    55                                               	reg [DATA_WIDTH-1:0] ADC_CTRL_REG;
+    56                                               	reg [DATA_WIDTH-1:0] DBG_CTRL_REG;
+    57                                               	reg [DATA_WIDTH-1:0] GPIO_DATA_REG;
+    58                                               	reg [DATA_WIDTH-1:0] DAC_OUTPUT_REG;
+    59                                               	reg [DATA_WIDTH-1:0] VOLTAGE_CTRL_REG;
+    60                                               	reg [DATA_WIDTH-1:0] CLK_CONFIG_REG;
+    61                                               	reg [DATA_WIDTH-1:0] TIMER_COUNT_REG;
+    62                                               	reg [DATA_WIDTH-1:0] INPUT_DATA_REG;
+    63                                               	reg [DATA_WIDTH-1:0] OUTPUT_DATA_REG;
+    64                                               	reg [DATA_WIDTH-1:0] DMA_CTRL_REG;
+    65                                               	reg [DATA_WIDTH-1:0] SYS_CTRL_REG;
+    66              1                          1     	always @(*) begin
+    67                                               		if (~wr & enable) begin
+    68                                               			case (addr)
+    69              1                    ***0***     				16'h0000: read_data <= SYS_STATUS_REG;
+    70              1                    ***0***     				16'h0040: read_data <= INT_CTRL_REG;
+    71              1                    ***0***     				16'h0080: read_data <= DEV_ID_REG;
+    72              1                    ***0***     				16'h00c0: read_data <= MEM_CTRL_REG;
+    73              1                    ***0***     				16'h0100: read_data <= TEMP_SENSOR_REG;
+    74              1                    ***0***     				16'h0140: read_data <= ADC_CTRL_REG;
+    75              1                    ***0***     				16'h0180: read_data <= DBG_CTRL_REG;
+    76              1                    ***0***     				16'h01c0: read_data <= GPIO_DATA_REG;
+    77              1                    ***0***     				16'h0200: read_data <= DAC_OUTPUT_REG;
+    78              1                    ***0***     				16'h0240: read_data <= VOLTAGE_CTRL_REG;
+    79              1                    ***0***     				16'h0280: read_data <= CLK_CONFIG_REG;
+    80              1                    ***0***     				16'h02c0: read_data <= TIMER_COUNT_REG;
+    81              1                    ***0***     				16'h0300: read_data <= INPUT_DATA_REG;
+    82              1                    ***0***     				16'h0340: read_data <= OUTPUT_DATA_REG;
+    83              1                    ***0***     				16'h0380: read_data <= DMA_CTRL_REG;
+    84              1                    ***0***     				16'h03c0: read_data <= SYS_CTRL_REG;
+    85                                               			endcase
+    86                                               		end
+    87                                               		
+    88                                               	end
+    89                                               
+    90              1                        136         always @(posedge clk or negedge rstn) begin
+    91                                                   	if(~rstn) begin
+    92              1                         90         		read_data <= 0;
+    93                                                   	end
+    94                                                       else if(enable) begin
+    95                                               
+    96                                                       	if(wr) begin
+    97                                                           	case (addr)
+    98              1                    ***0***                 		16'h0000: SYS_STATUS_REG	<= write_data;
+    99              1                    ***0***     					16'h0040: INT_CTRL_REG		<= write_data;
+    100             1                    ***0***     					16'h0080: DEV_ID_REG		<= write_data;
+    101             1                    ***0***     					16'h00c0: MEM_CTRL_REG		<= write_data;
+    102             1                    ***0***     					16'h0100: TEMP_SENSOR_REG	<= write_data;
+    103             1                    ***0***     					16'h0140: ADC_CTRL_REG		<= write_data;
+    104             1                    ***0***     					16'h0180: DBG_CTRL_REG		<= write_data;
+    105             1                    ***0***     					16'h01c0: GPIO_DATA_REG	 	<= write_data;
+    106             1                    ***0***     					16'h0200: DAC_OUTPUT_REG	<= write_data;
+    107             1                    ***0***     					16'h0240: VOLTAGE_CTRL_REG	<= write_data;
+    108             1                    ***0***     					16'h0280: CLK_CONFIG_REG	<= write_data;
+    109             1                    ***0***     					16'h02c0: TIMER_COUNT_REG	<= write_data;
+    110             1                    ***0***     					16'h0300: INPUT_DATA_REG	<= write_data;
+    111             1                    ***0***     					16'h0340: OUTPUT_DATA_REG	<= write_data;
+    112             1                    ***0***     					16'h0380: DMA_CTRL_REG		<= write_data;
+    113             1                    ***0***     					16'h03c0: SYS_CTRL_REG		<= write_data;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                       1192         4      1188     0.33%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /APB_top/DUT/reg_file --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                ADC_CTRL_REG[31-0]           0           0                                0.00 
+                              CLK_CONFIG_REG[31-0]           0           0                                0.00 
+                              DAC_OUTPUT_REG[31-0]           0           0                                0.00 
+                                DBG_CTRL_REG[31-0]           0           0                                0.00 
+                                  DEV_ID_REG[31-0]           0           0                                0.00 
+                                DMA_CTRL_REG[31-0]           0           0                                0.00 
+                               GPIO_DATA_REG[31-0]           0           0                                0.00 
+                              INPUT_DATA_REG[31-0]           0           0                                0.00 
+                                INT_CTRL_REG[31-0]           0           0                                0.00 
+                                MEM_CTRL_REG[31-0]           0           0                                0.00 
+                             OUTPUT_DATA_REG[31-0]           0           0                                0.00 
+                                SYS_CTRL_REG[31-0]           0           0                                0.00 
+                              SYS_STATUS_REG[31-0]           0           0                                0.00 
+                             TEMP_SENSOR_REG[31-0]           0           0                                0.00 
+                             TIMER_COUNT_REG[31-0]           0           0                                0.00 
+                            VOLTAGE_CTRL_REG[31-0]           0           0                                0.00 
+                                        addr[0-15]           0           0                                0.00 
+                                               clk           1           1                              100.00 
+                                            enable           0           0                                0.00 
+                                   read_data[31-0]           0           0                                0.00 
+                                              rstn           1           1                              100.00 
+                                                wr           0           0                                0.00 
+                                  write_data[0-31]           0           0                                0.00 
+
+Total Node Count     =        596 
+Toggled Node Count   =          2 
+Untoggled Node Count =        594 
+
+Toggle Coverage      =       0.33% (4 of 1192 bins)
+
+=================================================================================
+=== Instance: /APB_top/DUT/apb_slave
+=== Design Unit: work.APB_Slave
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                        28         8        20    28.57%
+
+================================Branch Details================================
+
+Branch Coverage for instance /APB_top/DUT/apb_slave
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_Wrapper.sv
+------------------------------------CASE Branch------------------------------------
+    160                                        3     Count coming in to CASE
+    161             1                          3                 IDLE: begin
+    169             1                    ***0***                 SETUP: begin
+    180             1                    ***0***                 ENABLE: begin
+    183             1                    ***0***                 READY: begin
+    190             1                    ***0***                 default: 
+Branch totals: 1 hit of 5 branches = 20.00%
+
+------------------------------------IF Branch------------------------------------
+    162                                        3     Count coming in to IF
+    162             1                    ***0***                     if (correct_slave) begin
+    165             1                          3                     else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    170                                  ***0***     Count coming in to IF
+    170             1                    ***0***                     if (~correct_slave) begin 
+    173             1                    ***0***                     else if (PENABLE) begin
+    176             1                    ***0***                     else begin
+Branch totals: 0 hits of 3 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    184                                  ***0***     Count coming in to IF
+    184             1                    ***0***                     if (correct_slave) begin 
+    186             1                    ***0***                     end else begin
+Branch totals: 0 hits of 2 branches = 0.00%
+
+------------------------------------IF Branch------------------------------------
+    197                                      136     Count coming in to IF
+    197             1                         90             if (!PRESETn) begin
+    199             1                         46             end else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    207                                      137     Count coming in to IF
+    207             1                         90             if (!PRESETn) begin
+    215             1                         47             else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    216                                       47     Count coming in to CASE
+    217             1                         47                     IDLE: begin
+    221             1                    ***0***                     SETUP: begin
+    228             1                    ***0***                     ENABLE: begin
+    235             1                    ***0***                     READY: begin
+    240             1                    ***0***                     default: begin
+Branch totals: 1 hit of 5 branches = 20.00%
+
+------------------------------------IF Branch------------------------------------
+    253                                        3     Count coming in to IF
+    253             1                    ***0***             if (PSELx) begin
+    261             1                          3             end else begin
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------CASE Branch------------------------------------
+    254                                  ***0***     Count coming in to CASE
+    255             1                    ***0***                     2'b00: address_encoding = 4'b0001; 
+    256             1                    ***0***                     2'b01: address_encoding = 4'b0010; 
+    257             1                    ***0***                     2'b10: address_encoding = 4'b0100; 
+    258             1                    ***0***                     2'b11: address_encoding = 4'b1000; //
+    259             1                    ***0***                     default: address_encoding = 4'b0000;
+Branch totals: 0 hits of 5 branches = 0.00%
+
+
+Expression Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Expressions                      2         0         2     0.00%
+
+================================Expression Details================================
+
+Expression Coverage for instance /APB_top/DUT/apb_slave --
+
+  File APB_Wrapper.sv
+----------------Focused Expression View-----------------
+Line       157 Item    1  (PSELx && (1 === address_encoding))
+Expression totals: 0 of 2 input terms covered = 0.00%
+
+                Input Term   Covered  Reason for no coverage   Hint
+               -----------  --------  -----------------------  --------------
+                     PSELx         N  '_1' not hit             Hit '_1'
+  (1 === address_encoding)         N  No hits                  Hit '_0' and '_1'
+
+     Rows:       Hits  FEC Target                  Non-masking condition(s)      
+ ---------  ---------  --------------------        -------------------------     
+  Row   1:          1  PSELx_0                     -                             
+  Row   2:    ***0***  PSELx_1                     (1 === address_encoding)      
+  Row   3:    ***0***  (1 === address_encoding)_0  PSELx                         
+  Row   4:    ***0***  (1 === address_encoding)_1  PSELx                         
+
+
+FSM Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    FSM States                       4         1         3    25.00%
+    FSM Transitions                  7         0         7     0.00%
+
+================================FSM Details================================
+
+FSM Coverage for instance /APB_top/DUT/apb_slave --
+
+FSM_ID: CurrentState
+    Current State Object : CurrentState
+    ----------------------
+    State Value MapInfo :
+    ---------------------
+Line          State Name               Value
+----          ----------               -----
+ 161                IDLE                   1
+ 169               SETUP                   3
+ 180              ENABLE                   2
+ 183               READY                   6
+    Covered States :
+    ----------------
+                   State           Hit_count
+                   -----           ---------
+                    IDLE                 136          
+    Uncovered States :
+    ------------------
+                   State
+                   -----
+                   SETUP
+                  ENABLE
+                   READY
+    Uncovered Transitions :
+    -----------------------
+Line            Trans_ID          Transition          
+----            --------          ----------          
+ 163                   0          IDLE -> SETUP       
+ 174                   1          SETUP -> ENABLE     
+ 171                   2          SETUP -> IDLE       
+ 181                   3          ENABLE -> READY     
+ 198                   4          ENABLE -> IDLE      
+ 187                   5          READY -> IDLE       
+ 185                   6          READY -> SETUP      
+
+
+    Summary                       Bins      Hits    Misses  Coverage
+    -------                       ----      ----    ------  --------
+        FSM States                   4         1         3    25.00%
+        FSM Transitions              7         0         7     0.00%
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      39        16        23    41.02%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_top/DUT/apb_slave --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_Wrapper.sv
+    122                                              module APB_Slave #(
+    123                                                  parameter DATA_WIDTH = 32,
+    124                                                  parameter ADDR_WIDTH = 16,
+    125                                                  parameter SLAVE_ID = 4'b0001
+    126                                              ) (
+    127                                              // Global Sinals
+    128                                                  input PCLK                                 ,
+    129                                                  input PRESETn                              ,  
+    130                                              
+    131                                              // input SLAVE FROM MASTER  
+    132                                                  input [ADDR_WIDTH-1 : 0]     PADDR         ,
+    133                                                  input                        PWRITE        ,
+    134                                                  input [DATA_WIDTH-1 : 0]     PWDATA        ,
+    135                                                  input                        PENABLE       ,
+    136                                              
+    137                                              // input SLAVE FROM REG_FILE  
+    138                                                  input [DATA_WIDTH-1 : 0]     RegRDATA      ,
+    139                                                  input       PSELx         ,
+    140                                                
+    141                                              // output SLAVE TO MASTER  
+    142                                                  output reg                       PREADY    ,
+    143                                                  output reg [DATA_WIDTH-1 : 0]    PRDATA    ,
+    144                                              
+    145                                              // output SLAVE TO REG_FILE  
+    146                                                  output reg [ADDR_WIDTH-1 : 0]    RegADDR   ,
+    147                                                  output reg [DATA_WIDTH-1 : 0]    RegWDATA  ,
+    148                                                  output reg                       RegENABLE,
+    149                                                  output reg                       RegWRITE
+    150                                              );
+    151                                                  
+    152                                                  import shared_pkg::*;
+    153                                                  state_e NextState, CurrentState;
+    154                                                  wire correct_slave;
+    155                                                  reg [3:0] address_encoding;
+    156                                                  //assign correct_slave = PSELx | (SLAVE_ID === address_encoding);
+    157             1                          5         assign correct_slave = PSELx && (SLAVE_ID === address_encoding);
+    158                                              // Next State Logic
+    159             1                          3         always @(*) begin
+    160                                                      case (CurrentState)
+    161                                                          IDLE: begin
+    162                                                              if (correct_slave) begin
+    163             1                    ***0***                         NextState <= SETUP;
+    164                                                              end
+    165                                                              else begin
+    166             1                          3                         NextState <= IDLE;
+    167                                                              end
+    168                                                          end
+    169                                                          SETUP: begin
+    170                                                              if (~correct_slave) begin 
+    171             1                    ***0***                         NextState <= IDLE;
+    172                                                              end
+    173                                                              else if (PENABLE) begin
+    174             1                    ***0***                         NextState <= ENABLE;
+    175                                                              end 
+    176                                                              else begin
+    177             1                    ***0***                         NextState <= SETUP;
+    178                                                              end
+    179                                                          end
+    180                                                          ENABLE: begin
+    181             1                    ***0***                     NextState <= READY;
+    182                                                          end
+    183                                                          READY: begin
+    184                                                              if (correct_slave) begin 
+    185             1                    ***0***                         NextState <= SETUP;
+    186                                                              end else begin
+    187             1                    ***0***                         NextState <= IDLE;
+    188                                                              end
+    189                                                          end
+    190                                                          default: 
+    191             1                    ***0***                     NextState <= IDLE;
+    192                                                      endcase
+    193                                                  end
+    194                                              
+    195                                              // State Memory
+    196             1                        136         always @(posedge PCLK or negedge PRESETn) begin
+    197                                                      if (!PRESETn) begin
+    198             1                         90                 CurrentState = IDLE;
+    199                                                      end else begin
+    200             1                         46                 CurrentState = NextState;
+    201                                                      end
+    202                                                  end
+    203                                              
+    204                                                  
+    205                                              // output Logic
+    206             1                        137         always @(posedge PCLK or negedge PRESETn) begin
+    207                                                      if (!PRESETn) begin
+    208             1                         90                 RegENABLE    <= 0;
+    209             1                         90                 RegADDR      <= 0; 
+    210             1                         90                 RegWRITE     <= 0;
+    211             1                         90                 PREADY       <= 0;
+    212             1                         90                 PRDATA       <= 0;
+    213             1                         90                 RegWDATA     <= 0;
+    214                                                      end
+    215                                                      else begin
+    216                                                          case (CurrentState)
+    217                                                              IDLE: begin
+    218             1                         47                         RegENABLE <= 0;
+    219                                                                  //PREADY <= 0;
+    220                                                              end 
+    221                                                              SETUP: begin
+    222             1                    ***0***                         RegADDR <= PADDR;
+    223             1                    ***0***                         RegWRITE <= PWRITE;
+    224             1                    ***0***                         RegWDATA <= PWDATA;
+    225             1                    ***0***                         RegENABLE <= 0;
+    226             1                    ***0***                         PREADY <= 0;
+    227                                                              end 
+    228                                                              ENABLE: begin
+    229             1                    ***0***                         RegENABLE <= PENABLE;
+    230                                                                  //PREADY <= 0;
+    231                                                                  /*
+    232                                                                      RegENABLE <= 1;
+    233                                                                  */
+    234                                                              end
+    235                                                              READY: begin
+    236                                                                 // RegENABLE <= 0;
+    237             1                    ***0***                         PREADY <= 1;
+    238             1                    ***0***                         PRDATA <= RegRDATA;
+    239                                                              end 
+    240                                                              default: begin
+    241             1                    ***0***                         RegENABLE <= 0;
+    242             1                    ***0***                         PREADY <= 0;
+    243                                                              end
+    244                                                          endcase
+    245                                                      end
+    246                                                  end
+    247                                              
+    248                                              wire [1:0] encoding;
+    249                                              //assign encoding = PADDR[ADDR_WIDTH-2:ADDR_WIDTH-3];
+    250                                              assign encoding = PADDR[ADDR_WIDTH-1:ADDR_WIDTH-2];
+    251                                              // ADDRESS Decoding
+    252             1                          3         always @(*) begin
+    253                                                      if (PSELx) begin
+    254                                                          case (encoding)
+    255             1                    ***0***                     2'b00: address_encoding = 4'b0001; 
+    256             1                    ***0***                     2'b01: address_encoding = 4'b0010; 
+    257             1                    ***0***                     2'b10: address_encoding = 4'b0100; 
+    258             1                    ***0***                     2'b11: address_encoding = 4'b1000; //
+    259             1                    ***0***                     default: address_encoding = 4'b0000;
+    260                                                          endcase
+    261                                                      end else begin
+    262             1                          3                 address_encoding = 0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        358         8       350     2.23%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /APB_top/DUT/apb_slave --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                      CurrentState               ENUM type       Value       Count 
+                                                                      IDLE           1      100.00 
+                                                                     SETUP           0        0.00 
+                                                                    ENABLE           0        0.00 
+                                                                     READY           0        0.00 
+                                         NextState               ENUM type       Value       Count 
+                                                                      IDLE           1      100.00 
+                                                                     SETUP           0        0.00 
+                                                                    ENABLE           0        0.00 
+                                                                     READY           0        0.00 
+                                       PADDR[0-15]           0           0                                0.00 
+                                              PCLK           1           1                              100.00 
+                                           PENABLE           0           0                                0.00 
+                                      PRDATA[31-0]           0           0                                0.00 
+                                            PREADY           0           0                                0.00 
+                                           PRESETn           1           1                              100.00 
+                                             PSELx           0           0                                0.00 
+                                      PWDATA[0-31]           0           0                                0.00 
+                                            PWRITE           1           1                              100.00 
+                                     RegADDR[15-0]           0           0                                0.00 
+                                         RegENABLE           0           0                                0.00 
+                                    RegRDATA[0-31]           0           0                                0.00 
+                                    RegWDATA[31-0]           0           0                                0.00 
+                                          RegWRITE           0           0                                0.00 
+                             address_encoding[3-0]           0           0                                0.00 
+                                     correct_slave           0           0                                0.00 
+                                     encoding[0-1]           0           0                                0.00 
+
+Total Node Count     =        183 
+Toggled Node Count   =          5 
+Untoggled Node Count =        178 
+
+Toggle Coverage      =       2.23% (8 of 358 bins)
+
+=================================================================================
+=== Instance: /APB_top/DUT/SVA
+=== Design Unit: work.APB_sva
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       4         1         3    25.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/APB_top/DUT/SVA/a_ready
+                     APB_sva.sv(6)                      0          0
+/APB_top/DUT/SVA/a_read
+                     APB_sva.sv(14)                     0          0
+/APB_top/DUT/SVA/a_write
+                     APB_sva.sv(22)                     0          0
+/APB_top/DUT/SVA/assert_rst
+                     APB_sva.sv(29)                     0          1
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /APB_top/DUT/SVA
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_sva.sv
+------------------------------------IF Branch------------------------------------
+    28                                        92     Count coming in to IF
+    28              1                         46      if(!If.PRESETn)
+                                              46     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+
+Directive Coverage:
+    Directives                       3         0         3     0.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/APB_top/DUT/SVA/c_ready                 APB_sva Verilog  SVA  APB_sva.sv(7)      0 ZERO      
+/APB_top/DUT/SVA/c_read                  APB_sva Verilog  SVA  APB_sva.sv(15)     0 ZERO      
+/APB_top/DUT/SVA/c_write                 APB_sva Verilog  SVA  APB_sva.sv(23)     0 ZERO      
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       1         1         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_top/DUT/SVA --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_sva.sv
+    1                                                module APB_sva( APB_if.DUT If);
+    2                                                
+    3                                                property ready;
+    4                                                    @(posedge If.PCLK) disable iff(~If.PRESETn) If.PSELx ##1 If.PENABLE |=> ##1 $rose(If.PREADY) 
+    5                                                endproperty
+    6                                                a_ready :assert property (ready);
+    7                                                c_ready :cover property (ready);
+    8                                                
+    9                                                
+    10                                               
+    11                                               property read;
+    12                                                   @(posedge If.PCLK) disable iff (~If.PRESETn || If.PWRITE) $rose(If.PREADY) |-> If.PRDATA === $past(DUT.reg_file.read_data)
+    13                                               endproperty
+    14                                               a_read :assert property (read);
+    15                                               c_read :cover property (read);
+    16                                               
+    17                                               
+    18                                               
+    19                                               property write;
+    20                                                   @(posedge If.PCLK) disable iff (~If.PRESETn || ~If.PWRITE) $rose(If.PREADY) |-> DUT.reg_file.write_data === $past(If.PWDATA,3)
+    21                                               endproperty
+    22                                               a_write :assert property (write);
+    23                                               c_write :cover property (write);
+    24                                               
+    25                                               
+    26                                               
+    27              1                         92     always_comb begin 
+
+
+=================================================================================
+=== Instance: /APB_top/DUT
+=== Design Unit: work.APB_Wrapper
+=================================================================================
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        164         0       164     0.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /APB_top/DUT --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                     RegADDR[0-15]           0           0                                0.00 
+                                         RegENABLE           0           0                                0.00 
+                                    RegRDATA[0-31]           0           0                                0.00 
+                                    RegWDATA[0-31]           0           0                                0.00 
+                                          RegWRITE           0           0                                0.00 
+
+Total Node Count     =         82 
+Toggled Node Count   =          0 
+Untoggled Node Count =         82 
+
+Toggle Coverage      =       0.00% (0 of 164 bins)
+
+=================================================================================
+=== Instance: /APB_top
+=== Design Unit: work.APB_top
+=================================================================================
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       2         2         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_top --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_top.sv
+    1                                                module APB_top;
+    2                                                
+    3                                                bit PCLK;
+    4                                                
+    5               1                        803      always #1 PCLK = ~PCLK;
+    5               2                        802     
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                          2         2         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /APB_top --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                              PCLK           1           1                              100.00 
+
+Total Node Count     =          1 
+Toggled Node Count   =          1 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (2 of 2 bins)
+
+=================================================================================
+=== Instance: /APB_seq_item_pkg
+=== Design Unit: work.APB_seq_item_pkg
+=================================================================================
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       5         5         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_seq_item_pkg --
+NOTE: The modification timestamp for source file 'APB_seq_item.sv' has been altered since compilation.
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_seq_item.sv
+    1                                                package APB_seq_item_pkg;
+    2                                                
+    3                                                import shared_pkg::*;
+    4                                                
+    5                                                class APB_seq_item;
+    6                                                
+    7                                                rand logic   PRESETn  ,PWRITE ,PENABLE ,PSELx ;
+    8                                                rand logic [ADDR_WIDTH-1 : 0] PADDR;
+    9                                                rand logic [DATA_WIDTH-1 : 0] PWDATA ;
+    10                                               logic [DATA_WIDTH-1 : 0]  PRDATA;
+    11                                               logic PREADY ; 
+    12                                               //bit [15:0] vals [$] = '{16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    13                                               
+    14                                               
+    15                                               constraint rst {
+    16                                                   PRESETn dist {0:=10 , 1:=90};
+    17                                               }
+    18                                               
+    19                                               constraint enable {
+    20                                                   PENABLE dist {0:=30 ,1:=70};
+    21                                               }
+    22                                               
+    23                                               constraint sel {
+    24                                                   PSELx dist {0:=10 ,1:=90};
+    25                                               }
+    26                                               
+    27                                               constraint w_r {
+    28                                                   PWRITE dist {0:=50 , 1:=50};
+    29                                               }
+    30                                               
+    31                                               constraint addr {
+    32                                                   PADDR inside {16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    33                                               }
+    34                                               
+    35                                               endclass
+    36                                               endpackage
+    1                                                package APB_seq_item_pkg;
+    2                                                
+    3                                                import shared_pkg::*;
+    4                                                
+    5                                                class APB_seq_item;
+    6                                                
+    7                                                rand logic   PRESETn  ,PWRITE ,PENABLE ,PSELx ;
+    8                                                rand logic [ADDR_WIDTH-1 : 0] PADDR;
+    9                                                rand logic [DATA_WIDTH-1 : 0] PWDATA ;
+    10                                               logic [DATA_WIDTH-1 : 0]  PRDATA;
+    11                                               logic PREADY ; 
+    12                                               //bit [15:0] vals [$] = '{16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    13                                               
+    14                                               
+    15                                               constraint rst {
+    16                                                   PRESETn dist {0:=10 , 1:=90};
+    17                                               }
+    18                                               
+    19                                               constraint enable {
+    20                                                   PENABLE dist {0:=30 ,1:=70};
+    21                                               }
+    22                                               
+    23                                               constraint sel {
+    24                                                   PSELx dist {0:=10 ,1:=90};
+    25                                               }
+    26                                               
+    27                                               constraint w_r {
+    28                                                   PWRITE dist {0:=50 , 1:=50};
+    29                                               }
+    30                                               
+    31                                               constraint addr {
+    32                                                   PADDR inside {16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    33                                               }
+    34                                               
+    35                                               endclass
+    36                                               endpackage
+    1                                                package APB_seq_item_pkg;
+    2                                                
+    3                                                import shared_pkg::*;
+    4                                                
+    5                                                class APB_seq_item;
+    6                                                
+    7                                                rand logic   PRESETn  ,PWRITE ,PENABLE ,PSELx ;
+    8                                                rand logic [ADDR_WIDTH-1 : 0] PADDR;
+    9                                                rand logic [DATA_WIDTH-1 : 0] PWDATA ;
+    10                                               logic [DATA_WIDTH-1 : 0]  PRDATA;
+    11                                               logic PREADY ; 
+    12                                               //bit [15:0] vals [$] = '{16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    13                                               
+    14                                               
+    15                                               constraint rst {
+    16                                                   PRESETn dist {0:=10 , 1:=90};
+    17                                               }
+    18                                               
+    19                                               constraint enable {
+    20                                                   PENABLE dist {0:=30 ,1:=70};
+    21                                               }
+    22                                               
+    23                                               constraint sel {
+    24                                                   PSELx dist {0:=10 ,1:=90};
+    25                                               }
+    26                                               
+    27                                               constraint w_r {
+    28                                                   PWRITE dist {0:=50 , 1:=50};
+    29                                               }
+    30                                               
+    31                                               constraint addr {
+    32                                                   PADDR inside {16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    33                                               }
+    34                                               
+    35                                               endclass
+    36                                               endpackage
+    1                                                package APB_seq_item_pkg;
+    2                                                
+    3                                                import shared_pkg::*;
+    4                                                
+    5                                                class APB_seq_item;
+    6                                                
+    7                                                rand logic   PRESETn  ,PWRITE ,PENABLE ,PSELx ;
+    8                                                rand logic [ADDR_WIDTH-1 : 0] PADDR;
+    9                                                rand logic [DATA_WIDTH-1 : 0] PWDATA ;
+    10                                               logic [DATA_WIDTH-1 : 0]  PRDATA;
+    11                                               logic PREADY ; 
+    12                                               //bit [15:0] vals [$] = '{16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    13                                               
+    14                                               
+    15                                               constraint rst {
+    16                                                   PRESETn dist {0:=10 , 1:=90};
+    17                                               }
+    18                                               
+    19                                               constraint enable {
+    20                                                   PENABLE dist {0:=30 ,1:=70};
+    21                                               }
+    22                                               
+    23                                               constraint sel {
+    24                                                   PSELx dist {0:=10 ,1:=90};
+    25                                               }
+    26                                               
+    27                                               constraint w_r {
+    28                                                   PWRITE dist {0:=50 , 1:=50};
+    29                                               }
+    30                                               
+    31                                               constraint addr {
+    32                                                   PADDR inside {16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    33                                               }
+    34                                               
+    35                                               endclass
+    36                                               endpackage
+    1                                                package APB_seq_item_pkg;
+    2                                                
+    3                                                import shared_pkg::*;
+    4                                                
+    5                                                class APB_seq_item;
+    6                                                
+    7                                                rand logic   PRESETn  ,PWRITE ,PENABLE ,PSELx ;
+    8                                                rand logic [ADDR_WIDTH-1 : 0] PADDR;
+    9                                                rand logic [DATA_WIDTH-1 : 0] PWDATA ;
+    10                                               logic [DATA_WIDTH-1 : 0]  PRDATA;
+    11                                               logic PREADY ; 
+    12                                               //bit [15:0] vals [$] = '{16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    13                                               
+    14                                               
+    15                                               constraint rst {
+    16                                                   PRESETn dist {0:=10 , 1:=90};
+    17                                               }
+    18                                               
+    19                                               constraint enable {
+    20                                                   PENABLE dist {0:=30 ,1:=70};
+    21                                               }
+    22                                               
+    23                                               constraint sel {
+    24                                                   PSELx dist {0:=10 ,1:=90};
+    25                                               }
+    26                                               
+    27                                               constraint w_r {
+    28                                                   PWRITE dist {0:=50 , 1:=50};
+    29                                               }
+    30                                               
+    31                                               constraint addr {
+    32                                                   PADDR inside {16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    33                                               }
+    34                                               
+    35                                               endclass
+    36                                               endpackage
+
+=================================================================================
+=== Instance: /APB_cvr_pkg
+=== Design Unit: work.APB_cvr_pkg
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      1        na        na    26.04%
+        Coverpoints/Crosses          6        na        na        na
+            Covergroup Bins         55         4        51     7.27%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /APB_cvr_pkg/APB_cvr/cg                          26.04%        100          -    Uncovered            
+    covered/total bins:                                     4         55          -                      
+    missing/total bins:                                    51         55          -                      
+    % Hit:                                              7.27%        100          -                      
+    Coverpoint addr                                     6.25%        100          -    Uncovered            
+        covered/total bins:                                 1         16          -                      
+        missing/total bins:                                15         16          -                      
+        % Hit:                                          6.25%        100          -                      
+        bin vals[0]                                       399          1          -    Covered              
+        bin vals[64]                                        0          1          -    ZERO                 
+        bin vals[128]                                       0          1          -    ZERO                 
+        bin vals[192]                                       0          1          -    ZERO                 
+        bin vals[256]                                       0          1          -    ZERO                 
+        bin vals[320]                                       0          1          -    ZERO                 
+        bin vals[384]                                       0          1          -    ZERO                 
+        bin vals[448]                                       0          1          -    ZERO                 
+        bin vals[512]                                       0          1          -    ZERO                 
+        bin vals[576]                                       0          1          -    ZERO                 
+        bin vals[640]                                       0          1          -    ZERO                 
+        bin vals[704]                                       0          1          -    ZERO                 
+        bin vals[768]                                       0          1          -    ZERO                 
+        bin vals[832]                                       0          1          -    ZERO                 
+        bin vals[896]                                       0          1          -    ZERO                 
+        bin vals[960]                                       0          1          -    ZERO                 
+    Coverpoint en                                      50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       399          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Coverpoint ready                                   50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       400          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Coverpoint sel                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin one                                             0          1          -    ZERO                 
+    Coverpoint wr                                      50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       399          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Cross c_addr_sel_wr                                 0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         32          -                      
+        missing/total bins:                                32         32          -                      
+        % Hit:                                          0.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <*,*,*>                                     0          1         32    ZERO                 
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       4         4         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_cvr_pkg --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_cvr.sv
+    1                                                package APB_cvr_pkg;
+    2                                                
+    3                                                import APB_seq_item_pkg::*;
+    4                                                
+    5                                                class APB_cvr;
+    6                                                
+    7               1                          1     APB_seq_item seq_item = new();
+    8                                                
+    9                                                covergroup cg;
+    10                                               
+    11                                               addr :coverpoint seq_item.PADDR {
+    12                                                   bins vals[] = {16'h0000 ,16'h0040 ,16'h0080 ,16'h00c0 ,16'h0100 ,16'h0140 ,16'h0180 ,16'h01c0 ,16'h0200 ,16'h0240 ,16'h0280 
+    13                                                                          ,16'h02c0 ,16'h0300 ,16'h0340 ,16'h0380 ,16'h03c0};
+    14                                               }
+    15                                               
+    16                                               en: coverpoint seq_item.PENABLE {
+    17                                                   option.weight=0;
+    18                                               }
+    19                                               
+    20                                               ready: coverpoint seq_item.PREADY {
+    21                                                   option.weight=0;
+    22                                               }
+    23                                               
+    24                                               sel: coverpoint seq_item.PSELx {
+    25                                                   bins one = {1};
+    26                                                   option.weight=0;
+    27                                               }
+    28                                               
+    29                                               wr: coverpoint seq_item.PWRITE {
+    30                                                   option.weight=0;
+    31                                               }
+    32                                               
+    33                                               c_addr_sel_wr: cross addr, sel ,wr;
+    34                                               
+    35                                               
+    36                                               endgroup
+    37                                               
+    38                                               
+    39                                               function sample_data (APB_seq_item item);
+    40              1                        400         seq_item = item;
+    41              1                        400         cg.sample();
+    42                                               endfunction
+    43                                               
+    44                                               function new ();
+    45              1                          1     	cg=new();
+
+
+=================================================================================
+=== Instance: /APB_monitor_pkg
+=== Design Unit: work.APB_monitor_pkg
+=================================================================================
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       1         1         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /APB_monitor_pkg --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File APB_monitor.sv
+    1                                                package APB_monitor_pkg;
+    2                                                
+    3                                                import APB_seq_item_pkg::*;
+    4                                                import APB_cvr_pkg::*;
+    5                                                
+    6                                                class APB_mon;
+    7                                                
+    8                                                APB_cvr cvr = new();
+    9                                                
+    10                                               task monitor (APB_seq_item seq_item);
+    11              1                        400     cvr.sample_data(seq_item);
+
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /APB_cvr_pkg/APB_cvr/cg                          26.04%        100          -    Uncovered            
+    covered/total bins:                                     4         55          -                      
+    missing/total bins:                                    51         55          -                      
+    % Hit:                                              7.27%        100          -                      
+    Coverpoint addr                                     6.25%        100          -    Uncovered            
+        covered/total bins:                                 1         16          -                      
+        missing/total bins:                                15         16          -                      
+        % Hit:                                          6.25%        100          -                      
+        bin vals[0]                                       399          1          -    Covered              
+        bin vals[64]                                        0          1          -    ZERO                 
+        bin vals[128]                                       0          1          -    ZERO                 
+        bin vals[192]                                       0          1          -    ZERO                 
+        bin vals[256]                                       0          1          -    ZERO                 
+        bin vals[320]                                       0          1          -    ZERO                 
+        bin vals[384]                                       0          1          -    ZERO                 
+        bin vals[448]                                       0          1          -    ZERO                 
+        bin vals[512]                                       0          1          -    ZERO                 
+        bin vals[576]                                       0          1          -    ZERO                 
+        bin vals[640]                                       0          1          -    ZERO                 
+        bin vals[704]                                       0          1          -    ZERO                 
+        bin vals[768]                                       0          1          -    ZERO                 
+        bin vals[832]                                       0          1          -    ZERO                 
+        bin vals[896]                                       0          1          -    ZERO                 
+        bin vals[960]                                       0          1          -    ZERO                 
+    Coverpoint en                                      50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       399          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Coverpoint ready                                   50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       400          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Coverpoint sel                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin one                                             0          1          -    ZERO                 
+    Coverpoint wr                                      50.00%        100          -    Uncovered            
+        covered/total bins:                                 1          2          -                      
+        missing/total bins:                                 1          2          -                      
+        % Hit:                                         50.00%        100          -                      
+        bin auto[0]                                       399          1          -    Covered              
+        bin auto[1]                                         0          1          -    ZERO                 
+    Cross c_addr_sel_wr                                 0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         32          -                      
+        missing/total bins:                                32         32          -                      
+        % Hit:                                          0.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin <*,*,*>                                     0          1         32    ZERO                 
+
+TOTAL COVERGROUP COVERAGE: 26.04%  COVERGROUP TYPES: 1
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/APB_top/DUT/SVA/c_ready                 APB_sva Verilog  SVA  APB_sva.sv(7)      0 ZERO      
+/APB_top/DUT/SVA/c_read                  APB_sva Verilog  SVA  APB_sva.sv(15)     0 ZERO      
+/APB_top/DUT/SVA/c_write                 APB_sva Verilog  SVA  APB_sva.sv(23)     0 ZERO      
+
+TOTAL DIRECTIVE COVERAGE: 0.00%  COVERS: 3
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/APB_top/TEST/#ublk#73696930#23/immed__25
+                     APB_tb.sv(25)                      1          1
+/APB_top/TEST/#ublk#73696930#39/immed__41
+                     APB_tb.sv(41)                      0          1
+/APB_top/TEST/#ublk#73696930#54/immed__56
+                     APB_tb.sv(56)                      0          1
+/APB_top/TEST/#ublk#73696930#70/immed__72
+                     APB_tb.sv(72)                      0          1
+/APB_top/DUT/SVA/a_ready
+                     APB_sva.sv(6)                      0          0
+/APB_top/DUT/SVA/a_read
+                     APB_sva.sv(14)                     0          0
+/APB_top/DUT/SVA/a_write
+                     APB_sva.sv(22)                     0          0
+/APB_top/DUT/SVA/assert_rst
+                     APB_sva.sv(29)                     0          1
+
+Total Coverage By Instance (filtered view): 18.42%
+
